@@ -1,39 +1,8 @@
-import pytest
-from pytest_django.asserts import assertRedirects
-
 from http import HTTPStatus
 
+import pytest
 from django.urls import reverse
-# pytest --trace --lf -x
-# breakpoint()
-# @pytest.mark.<название маркера> skipif xfail usefixtures
-# @pytest.mark.parametrize(
-#    'input_arg, expected_result',  # Названия аргументов, передаваемых в тест.
-#    [(4, 5), (3, 5)]  # Список кортежей со значениями аргументов.
-# )
-# from forms import BAD_WORDS, WARNING, CommentForm
-# CommentForm: fields = ('text',)
-# models: News(title text date), Comment(news author text created)
-# urls (news:home/edit/delete/detail)
-# from pytest_django.asserts import assertRedirects
-#
-
-"""
-*Главная страница доступна анонимному пользователю.
-
-*Страница отдельной новости доступна анонимному пользователю.
-
-*Страницы удаления и редактирования комментария доступны автору комментария.
-
-*При попытке перейти на страницу редактирования или удаления комментария
-анонимный пользователь перенаправляется на страницу авторизации.
-
-*Авторизованный пользователь не может зайти на страницы редактирования
-или удаления чужих комментариев (возвращается ошибка 404).
-
-*Страницы регистрации пользователей, входа в учётную запись и выхода из
-неё доступны анонимным пользователям.
-"""
+from pytest_django.asserts import assertRedirects
 
 
 @pytest.mark.django_db
@@ -43,8 +12,8 @@ class TestRoutes:
         ('news:home', 'users:login', 'users:logout', 'users:signup')
     )
     def test_pages_availability_for_anonymous_user(self, client, name):
-        url = reverse(name)  # Получаем ссылку на нужный адрес.
-        response = client.get(url)  # Выполняем запрос.
+        url = reverse(name)
+        response = client.get(url)
         assert response.status_code == HTTPStatus.OK
 
     def test_detail_for_anon(self, client, news):
