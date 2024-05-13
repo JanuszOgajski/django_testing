@@ -1,9 +1,9 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
-from notes.forms import NoteForm
 
-from .t_mixin import TestMixin
+from notes.forms import NoteForm
+from .mixins import TestMixin
 
 User = get_user_model()
 

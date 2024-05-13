@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 
-from .t_mixin import TestMixin
+from .mixins import TestMixin
 
 User = get_user_model()
 

@@ -3,11 +3,11 @@ from http import HTTPStatus
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
-from notes.forms import WARNING
-from notes.models import Note
 from pytils.translit import slugify
 
-from .t_mixin import TestMixin
+from notes.forms import WARNING
+from notes.models import Note
+from .mixins import TestMixin
 
 User = get_user_model()
 

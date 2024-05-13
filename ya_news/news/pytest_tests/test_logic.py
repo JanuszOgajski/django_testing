@@ -2,9 +2,10 @@ from http import HTTPStatus
 
 import pytest
 from django.urls import reverse
+from pytest_django.asserts import assertFormError, assertRedirects
+
 from news.forms import WARNING
 from news.models import Comment
-from pytest_django.asserts import assertFormError, assertRedirects
 
 C_FORM_DATA = {
     'good_data': {'text': 'tekst'},
